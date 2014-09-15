@@ -13,16 +13,20 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>0.5.0.BUILD-SNAPSHOT</version>
+        <version>1.1.4.RELEASE</version>
     </parent>
 
     <!-- Add typical dependencies for a web application -->
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-    </dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+</dependencies>
 
     <!-- Package as an executable JAR -->
     <build>
@@ -57,6 +61,12 @@
             <id>spring-milestones</id>
             <url>http://repo.spring.io/milestone</url>
         </pluginRepository>
+        
+        <pluginRepository>
+            <id>spring-milestone</id>
+            <url>http://repo.spring.io/libs-release</url>
+        </pluginRepository>
+        
     </pluginRepositories>
     
     <properties>

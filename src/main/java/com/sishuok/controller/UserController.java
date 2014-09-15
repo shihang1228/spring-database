@@ -6,24 +6,23 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
 
-/**
- * <p>User: Zhang Kaitao
- * <p>Date: 13-12-22
- * <p>Version: 1.0
- */
+import org.springframework.ui.Model;
+
+
 @EnableAutoConfiguration
-@RestController
+@Controller
 @RequestMapping("/user")
 public class UserController {
 
     @RequestMapping("/{id}")
-    private User view(@PathVariable("id") Long id, @RequestParam("name") String name) {
+    private String view(@PathVariable("id") Long id, @RequestParam("name") String name, Model model) {
         User user = new User();
         user.setId(id);
         user.setName(name);
-        return user;
+        model.addAttribute("user", user);
+        return "helloWorld";
     }
     
     
