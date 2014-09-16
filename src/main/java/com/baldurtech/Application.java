@@ -1,4 +1,4 @@
-package com.sishuok;
+package com.baldurtech;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

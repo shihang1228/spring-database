@@ -1,4 +1,4 @@
-package com.sishuok.entity;
+package com.baldurtech.entity;
 
 import java.io.Serializable;
 

@@ -1,7 +1,7 @@
-package com.sishuok.controller;
+package com.baldurtech.controller;
 
-import com.sishuok.entity.User;
-import com.sishuok.entity.Contact;
+import com.baldurtech.entity.User;
+import com.baldurtech.entity.Contact;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;

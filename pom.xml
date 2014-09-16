@@ -70,7 +70,7 @@
     </pluginRepositories>
     
     <properties>
-        <start-class>com.sishuok.Application</start-class>
+        <start-class>com.baldurtech.Application</start-class>
     </properties>
     
 </project>
