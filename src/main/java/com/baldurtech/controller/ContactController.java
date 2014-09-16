@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 @EnableAutoConfiguration
 @Controller
 @RequestMapping("/contact")
-public class UserController {
+public class ContactController {
 
     @RequestMapping("/{id}")
     private String view(@PathVariable("id") Long id, @RequestParam("name") String name, Model model) {
