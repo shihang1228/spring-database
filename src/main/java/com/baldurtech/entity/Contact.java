@@ -13,6 +13,12 @@ public class Contact
     private String job;
     private Long jobLevel;
     
+    public Contact(long id, String name, String mobile) {
+        this.id = id;
+        this.name = name;
+        this.mobile = mobile;
+    }
+    
     public void setId(Long id)
     {
         this.id = id;
@@ -97,6 +103,11 @@ public class Contact
     public Long getJobLevel()
     {
         return this.jobLevel;
+    }
+    @Override
+    public String toString()
+    {
+        return String.format("Customer[id=%d,name='%s', mobile='%s']", id, name, mobile);
     }
 
 }

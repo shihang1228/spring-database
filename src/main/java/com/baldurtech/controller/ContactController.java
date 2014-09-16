@@ -28,7 +28,7 @@ public class ContactController {
     
     @RequestMapping("list")
     private String contactList(Model model) {
-        Contact contact = new Contact();
+        Contact contact = new Contact(1L, "shihang", "123");
         contact.setId(1L);
         contact.setName("shihang");
         model.addAttribute("contact", contact);
