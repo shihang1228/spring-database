@@ -1,6 +1,7 @@
 package com.sishuok.controller;
 
 import com.sishuok.entity.User;
+import com.sishuok.entity.Contact;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,7 @@ import org.springframework.ui.Model;
 
 @EnableAutoConfiguration
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/contact")
 public class UserController {
 
     @RequestMapping("/{id}")
@@ -24,6 +25,16 @@ public class UserController {
         model.addAttribute("user", user);
         return "helloWorld";
     }
+    
+    @RequestMapping("list")
+    private String contactList(Model model) {
+        Contact contact = new Contact();
+        contact.setId(1L);
+        contact.setName("shihang");
+        model.addAttribute("contact", contact);
+        return "contactList";
+    }
+    
     
     
 }
