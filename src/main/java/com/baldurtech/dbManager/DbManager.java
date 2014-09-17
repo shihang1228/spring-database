@@ -1,6 +1,10 @@
 package com.baldurtech.dbManager;
 
+import com.baldurtech.entity.Contact;
+
 import javax.sql.DataSource;
+import java.util.List;
+
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -30,5 +34,12 @@ public class DbManager
         jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 3L, "renjian", "345");
         jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 4L, "yufei", "456");
         jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 5L, "shuangshuang", "678");
+    }
+    
+    public List<Contact> executeQuery(JdbcTemplate jdbcTemplate)
+    {
+        String sql = "SELECT * FROM contacts";  
+        Object[] params = new Object[] {};
+        return jdbcTemplate.query(sql, params, new RowMapperImpl());      
     }
 }
