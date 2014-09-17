@@ -8,13 +8,12 @@ import org.springframework.context.annotation.Configuration;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import com.baldurtech.entity.Contact;
+import com.baldurtech.dbManager.DbManager;
 import com.baldurtech.dbManager.RowMapperImpl;
 
 @EnableAutoConfiguration
@@ -24,7 +23,9 @@ public class Application
 {
     public static void main(String[] args) 
     {
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(driverManager());
+        SpringApplication.run(Application.class);
+        DbManager dbManager = new DbManager();
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dbManager.driverManager());
         
         System.out.println("Creating tables");
         insert(jdbcTemplate);
@@ -36,17 +37,6 @@ public class Application
         {
             System.out.println(contact);
         }
-    }
-    
-    public static DataSource driverManager()
-    {
-        SpringApplication.run(Application.class);
-        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-        dataSource.setDriverClass(com.mysql.jdbc.Driver.class);
-        dataSource.setUsername("root");
-        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/test");
-        dataSource.setPassword("");
-        return dataSource;
     }
     
     public static void insert(JdbcTemplate jdbcTemplate)
