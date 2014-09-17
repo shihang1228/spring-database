@@ -2,6 +2,10 @@ package com.baldurtech.controller;
 
 import com.baldurtech.entity.User;
 import com.baldurtech.entity.Contact;
+import com.baldurtech.dbManager.DbManager;
+
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 
 @EnableAutoConfiguration
@@ -28,10 +33,22 @@ public class ContactController {
     
     @RequestMapping("list")
     private String contactList(Model model) {
-        Contact contact = new Contact(1L, "shihang", "123");
+        /*Contact contact = new Contact(1L, "shihang", "123");
         contact.setId(1L);
         contact.setName("shihang");
         model.addAttribute("contact", contact);
+        return "contactList";*/
+        
+        
+        DbManager dbManager = new DbManager();
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dbManager.driverManager());
+        
+        List<Contact> results = dbManager.executeQuery(jdbcTemplate);
+        for(Contact contact: results)
+        {
+            System.out.println(contact);
+            model.addAttribute("contact", contact);
+        }
         return "contactList";
     }
     
