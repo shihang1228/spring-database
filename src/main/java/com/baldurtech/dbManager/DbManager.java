@@ -38,8 +38,8 @@ public class DbManager
     
     public List<Contact> executeQuery(JdbcTemplate jdbcTemplate)
     {
-        String sql = "SELECT * FROM contacts WHERE name=?";  
-        Object[] params = new Object[] {"renjian"};
+        String sql = "SELECT * FROM contacts";  
+        Object[] params = new Object[] {};
         return jdbcTemplate.query(sql, params, new RowMapperImpl());      
     }
 }

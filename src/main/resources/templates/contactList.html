@@ -6,6 +6,17 @@
 </head>
 <body>
     <h1>Contact List</h1>
-    <p th:text="'Hello, ' + ${contact.name} + '!'" />
+    <ul th:each="contact : ${contact}">
+        <li><p th:text="'Hello, ' + ${contact.id} + '!'" /></li>
+        <li><p th:text="'Hello, ' + ${contact.name} + '!'" /></li>
+        <li><p th:text="'Hello, ' + ${contact.mobile} + '!'" /></li>
+    </ul>
+    
+    <tr th:each="contact : ${contact}" border="1">
+        <td th:text="${contact.id}"></td>
+        <td th:text="${contact.name}"></td>
+        <td th:text="${contact.mobile}"></td>
+    </tr>
+    
 </body>
 </html>
