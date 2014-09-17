@@ -24,28 +24,28 @@ public class Application
     {
         SpringApplication.run(Application.class);
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-        dataSource.setDriverClass(org.h2.Driver.class);
-        dataSource.setUsername("sa");
-        dataSource.setUrl("jdbc:h2:mem");
+        dataSource.setDriverClass(com.mysql.jdbc.Driver.class);
+        dataSource.setUsername("root");
+        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/test");
         dataSource.setPassword("");
         
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         
         System.out.println("Creating tables");
         
-        jdbcTemplate.execute("drop table contact if exists");
-        jdbcTemplate.execute("create table contact(" +
+        jdbcTemplate.execute("drop table if exists contacts");
+        jdbcTemplate.execute("create table contacts(" +
                 "id serial, name varchar(255), mobile varchar(255))");
                             
-        System.out.println("Inserting contact record for");
+        System.out.println("Inserting customer record for");
         
-        jdbcTemplate.update("INSERT INTO contact(id,name,mobile) values(?,?,?)", 1L, "shihang", "123");
-        jdbcTemplate.update("INSERT INTO contact(id,name,mobile) values(?,?,?)", 2L, "xiaobai", "234");
-        jdbcTemplate.update("INSERT INTO contact(id,name,mobile) values(?,?,?)", 3L, "renjian", "345");
-        jdbcTemplate.update("INSERT INTO contact(id,name,mobile) values(?,?,?)", 4L, "yufei", "456");
-        jdbcTemplate.update("INSERT INTO contact(id,name,mobile) values(?,?,?)", 5L, "shuangshuang", "678");
+        jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 1L, "shihang", "123");
+        jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 2L, "xiaobai", "234");
+        jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 3L, "renjian", "345");
+        jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 4L, "yufei", "456");
+        jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 5L, "shuangshuang", "678");
         
-        List<Contact> results = jdbcTemplate.query("SELECT * FROM contact WHERE name = ?", new Object[] {"shihang"}, 
+        List<Contact> results = jdbcTemplate.query("SELECT * FROM contacts WHERE name = ?", new Object[] {"shihang"}, 
         new RowMapper<Contact>() 
         {
             @Override
