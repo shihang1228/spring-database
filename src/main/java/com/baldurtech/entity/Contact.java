@@ -13,11 +13,11 @@ public class Contact
     private String job;
     private Long jobLevel;
     
-    public Contact(long id, String name, String mobile) {
+    /*public Contact(long id, String name, String mobile) {
         this.id = id;
         this.name = name;
         this.mobile = mobile;
-    }
+    }*/
     
     public void setId(Long id)
     {

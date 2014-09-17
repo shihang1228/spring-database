@@ -26,28 +26,7 @@ public class Application
         JdbcTemplate jdbcTemplate = new JdbcTemplate(driverManager());
         
         System.out.println("Creating tables");
-        
-        /*jdbcTemplate.execute("drop table if exists contacts");
-        jdbcTemplate.execute("create table contacts(" +
-                "id serial, name varchar(255), mobile varchar(255))");
-                            
-        System.out.println("Inserting customer record for");
-        
-        jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 1L, "shihang", "123");
-        jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 2L, "xiaobai", "234");
-        jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 3L, "renjian", "345");
-        jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 4L, "yufei", "456");
-        jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 5L, "shuangshuang", "678");*/
-        
-        List<Contact> results = jdbcTemplate.query("SELECT * FROM contacts WHERE name = ?", new Object[] {"shihang"}, 
-        new RowMapper<Contact>() 
-        {
-            @Override
-            public Contact mapRow(ResultSet rs, int rowNum) throws SQLException
-            {
-                return new Contact(rs.getLong("id"), rs.getString("name"), rs.getString("mobile"));
-            }
-        });
+        List<Contact> results = executeQuery(jdbcTemplate);  
         
         for(Contact contact: results)
         {
@@ -64,5 +43,26 @@ public class Application
         dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/test");
         dataSource.setPassword("");
         return dataSource;
+    }
+    
+    public static List<Contact> executeQuery(JdbcTemplate jdbcTemplate)
+    {
+        String sql = "SELECT * FROM contacts WHERE name = ?";
+        Object[] params = new Object[] {"shihang"};
+        return jdbcTemplate.query(sql, params, new RowMapperImpl());      
+    }
+    
+}
+
+class RowMapperImpl implements RowMapper
+{
+    @Override
+    public Contact mapRow(ResultSet rs, int rowNum) throws SQLException
+    {
+        Contact contact = new Contact();
+        contact.setId(rs.getLong("id"));
+        contact.setName(rs.getString("name"));
+        contact.setMobile(rs.getString("mobile"));
+        return contact;
     }
 }
