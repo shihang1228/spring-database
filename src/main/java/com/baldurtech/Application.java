@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -22,18 +23,11 @@ public class Application
 {
     public static void main(String[] args) 
     {
-        SpringApplication.run(Application.class);
-        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-        dataSource.setDriverClass(com.mysql.jdbc.Driver.class);
-        dataSource.setUsername("root");
-        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/test");
-        dataSource.setPassword("");
-        
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(driverManager());
         
         System.out.println("Creating tables");
         
-        jdbcTemplate.execute("drop table if exists contacts");
+        /*jdbcTemplate.execute("drop table if exists contacts");
         jdbcTemplate.execute("create table contacts(" +
                 "id serial, name varchar(255), mobile varchar(255))");
                             
@@ -43,7 +37,7 @@ public class Application
         jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 2L, "xiaobai", "234");
         jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 3L, "renjian", "345");
         jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 4L, "yufei", "456");
-        jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 5L, "shuangshuang", "678");
+        jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 5L, "shuangshuang", "678");*/
         
         List<Contact> results = jdbcTemplate.query("SELECT * FROM contacts WHERE name = ?", new Object[] {"shihang"}, 
         new RowMapper<Contact>() 
@@ -59,5 +53,16 @@ public class Application
         {
             System.out.println(contact);
         }
+    }
+    
+    public static DataSource driverManager()
+    {
+        SpringApplication.run(Application.class);
+        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+        dataSource.setDriverClass(com.mysql.jdbc.Driver.class);
+        dataSource.setUsername("root");
+        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/test");
+        dataSource.setPassword("");
+        return dataSource;
     }
 }
