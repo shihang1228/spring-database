@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import com.baldurtech.entity.Contact;
+import com.baldurtech.dbManager.RowMapperImpl;
 
 @EnableAutoConfiguration
 @Configuration
@@ -47,22 +48,9 @@ public class Application
     
     public static List<Contact> executeQuery(JdbcTemplate jdbcTemplate)
     {
-        String sql = "SELECT * FROM contacts WHERE name = ?";
+        String sql = "SELECT * FROM contacts WHERE name = ?";  
         Object[] params = new Object[] {"shihang"};
         return jdbcTemplate.query(sql, params, new RowMapperImpl());      
     }
     
-}
-
-class RowMapperImpl implements RowMapper
-{
-    @Override
-    public Contact mapRow(ResultSet rs, int rowNum) throws SQLException
-    {
-        Contact contact = new Contact();
-        contact.setId(rs.getLong("id"));
-        contact.setName(rs.getString("name"));
-        contact.setMobile(rs.getString("mobile"));
-        return contact;
-    }
 }
