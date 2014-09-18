@@ -38,7 +38,7 @@ public class DbManager
     
     public List<Contact> executeQuery(JdbcTemplate jdbcTemplate)
     {
-        String sql = "SELECT * FROM contacts";  
+        String sql = "SELECT * FROM contacts WHERE id=5";  
         Object[] params = new Object[] {};
         return jdbcTemplate.query(sql, params, new RowMapperImpl());      
     }
