@@ -11,12 +11,20 @@
         <li><p th:text="'Hello, ' + ${contact.name} + '!'" /></li>
         <li><p th:text="'Hello, ' + ${contact.mobile} + '!'" /></li>
     </ul>
-    
-    <tr th:each="contact : ${contact}" border="1">
-        <td th:text="${contact.id}"></td>
-        <td th:text="${contact.name}"></td>
-        <td th:text="${contact.mobile}"></td>
-    </tr>
+    <table border="1">
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>mobile</td>
+        </tr>
+        <p th:each="contact : ${contact}">
+            <tr>
+                <td th:text="${contact.id}"></td>
+                <td th:text="${contact.name}"></td>
+                <td th:text="${contact.mobile}"></td>
+            </tr>
+        </p>
+    </table>
     
 </body>
 </html>
