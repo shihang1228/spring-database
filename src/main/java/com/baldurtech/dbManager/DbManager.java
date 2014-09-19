@@ -45,6 +45,14 @@ public class DbManager
         return contact;
     }
     
+    public Contact update(Contact contact)
+    {
+        String sql = "UPDATE contact SET name=?, mobile=?, email=?, vpmn=?, office_address=?, home_address=?, memo=?, job=?, job_level=? WHERE id=?";
+        Object[] params = new Object[] {contact.getName(), contact.getMobile(), contact.getEmail(), contact.getVpmn(), contact.getOfficeAddress(), contact.getHomeAddress(), contact.getMemo(), contact.getJob(), contact.getJobLevel(), contact.getId()};
+        jdbcTemplate.update(sql, params);
+        return contact;
+    }
+    
     public List<Contact> executeQuery(Contact contact)
     {
         String sql = "SELECT * FROM contacts WHERE name=?";  

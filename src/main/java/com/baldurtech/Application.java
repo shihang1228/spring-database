@@ -43,7 +43,7 @@ public class Application
         contact.setJob("HR");
         contact.setJobLevel(3L);
         
-        dbManager.insert(contact);
+        dbManager.update(contact);
         System.out.println(contact);
         
     }

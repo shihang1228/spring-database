@@ -42,7 +42,7 @@ public class ContactController {
         
         DbManager dbManager = new DbManager();
         Contact contact = new Contact();
-        contact.setName("renjian");
+        contact.setName("shihang");
         List<Contact> results = dbManager.executeQuery(contact);
         model.addAttribute("contact", results);
         return "contactList";
