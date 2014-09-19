@@ -24,12 +24,11 @@ public class Application
         DbManager dbManager = new DbManager();
         System.out.println("executeQuery");
         
-        List<Contact> results = dbManager.executeQuery();  
+        Contact contact = new Contact();
+        contact.setId(2L);
+        contact = dbManager.executeQueryById(contact);  
+        System.out.println(contact);
         
-        for(Contact contact: results)
-        {
-            System.out.println(contact);
-        }
         /*DbManager dbManager = new DbManager();
         
         Contact contact = new Contact();

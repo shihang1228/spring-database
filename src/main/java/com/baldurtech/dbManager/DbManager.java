@@ -67,4 +67,16 @@ public class DbManager
         return jdbcTemplate.query(sql, params, new RowMapperImpl());      
     }
     
+    public Contact executeQueryById(Contact contact)
+    {
+        String sql = "SELECT * FROM contact WHERE id=?";
+        Object[] params = new Object[] {contact.getId()};       
+        List<Contact> result = jdbcTemplate.query(sql, params, new RowMapperImpl());
+        if(result.isEmpty())
+        {
+            return null;
+        }
+        return result.get(0);
+    }
+    
 }
