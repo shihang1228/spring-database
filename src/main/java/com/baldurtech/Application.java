@@ -33,7 +33,7 @@ public class Application
         DbManager dbManager = new DbManager();
         
         Contact contact = new Contact();
-        contact.setId(2L);
+        contact.setId(14L);
         contact.setName("mengguizhen");
         contact.setMobile("18235408753");
         contact.setEmail("123@qq.com");
@@ -43,7 +43,7 @@ public class Application
         contact.setJob("HR");
         contact.setJobLevel(3L);
         
-        dbManager.update(contact);
+        dbManager.delete(contact);
         System.out.println(contact);
         
     }

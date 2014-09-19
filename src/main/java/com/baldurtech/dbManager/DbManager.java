@@ -53,6 +53,13 @@ public class DbManager
         return contact;
     }
     
+    public void delete(Contact contact)
+    {
+        String sql = "DELETE FROM contact WHERE id=?";
+        Object[] params = new Object[] {contact.getId()};
+        jdbcTemplate.update(sql, params);
+    }
+    
     public List<Contact> executeQuery(Contact contact)
     {
         String sql = "SELECT * FROM contacts WHERE name=?";  
