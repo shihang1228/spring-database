@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -20,10 +21,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @EnableAutoConfiguration
 @Controller
 @RequestMapping("/contact")
-public class ContactController {
+public class ContactController 
+{
 
     @RequestMapping("/{id}")
-    private String view(@PathVariable("id") Long id, @RequestParam("name") String name, Model model) {
+    private String view(@PathVariable("id") Long id, @RequestParam("name") String name, Model model) 
+    {
         User user = new User();
         user.setId(id);
         user.setName(name);
@@ -32,22 +35,44 @@ public class ContactController {
     }
     
     @RequestMapping("list")
-    private String contactList(Model model) {
-        /*Contact contact = new Contact(1L, "shihang", "123");
-        contact.setId(1L);
-        contact.setName("shihang");
-        model.addAttribute("contact", contact);
-        return "contactList";*/
-        
-        
+    private String contactList(Model model) 
+    {       
         DbManager dbManager = new DbManager();
-        Contact contact = new Contact();
-        contact.setName("shihang");
-        List<Contact> results = dbManager.executeQuery(contact);
+        List<Contact> results = dbManager.executeQuery();
         model.addAttribute("contact", results);
         return "contactList";
     }
+
+    @RequestMapping(value = "create",method = RequestMethod.GET)
+    private String contactCreate()
+    {
+        return "create";    
+    }
     
-    
-    
+    @RequestMapping(value = "save",method = RequestMethod.POST)
+    private String contactCreate(@RequestParam(value="name") String name,
+                                 @RequestParam(value="mobile") String mobile,
+                                 @RequestParam(value="email") String email,
+                                 @RequestParam(value="vpmn") String vpmn,
+                                 @RequestParam(value="home_address") String homeAddress,
+                                 @RequestParam(value="office_address") String officeAddress,
+                                 @RequestParam(value="job") String job,
+                                 @RequestParam(value="job_level") String jobLevel,
+                                 @RequestParam(value="memo") String memo, Model model)
+    {
+        DbManager dbManager = new DbManager();
+        Contact contact = new Contact();
+        contact.setName(name);
+        contact.setMobile(mobile);
+        contact.setEmail(email);
+        contact.setOfficeAddress(officeAddress);
+        contact.setHomeAddress(homeAddress);
+        contact.setJob(job);
+        contact.setJobLevel(Long.valueOf(jobLevel));
+        contact.setVpmn(vpmn);
+        contact.setMemo(memo);
+        
+        dbManager.insert(contact);
+        return "save";
+    }    
 }
