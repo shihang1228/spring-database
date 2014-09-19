@@ -22,13 +22,9 @@ public class Application
     {
         SpringApplication.run(Application.class);
         DbManager dbManager = new DbManager();
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dbManager.driverManager());
-        
-        System.out.println("Creating tables");
-        dbManager.insert(jdbcTemplate);
         System.out.println("executeQuery");
         
-        List<Contact> results = dbManager.executeQuery(jdbcTemplate);  
+        List<Contact> results = dbManager.executeQuery();  
         
         for(Contact contact: results)
         {

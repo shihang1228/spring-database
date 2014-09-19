@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class DbManager
 {
+    JdbcTemplate jdbcTemplate = new JdbcTemplate(driverManager());
     public DataSource driverManager()
     {
 
@@ -21,7 +22,7 @@ public class DbManager
         return dataSource;
     }
     
-    public void insert(JdbcTemplate jdbcTemplate)
+    public void insert()
     {
         jdbcTemplate.execute("drop table if exists contacts");
         jdbcTemplate.execute("create table contacts(" +
@@ -36,10 +37,10 @@ public class DbManager
         jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 5L, "shuangshuang", "678");
     }
     
-    public List<Contact> executeQuery(JdbcTemplate jdbcTemplate)
+    public List<Contact> executeQuery()
     {
-        String sql = "SELECT * FROM contacts WHERE id=5";  
-        Object[] params = new Object[] {};
+        String sql = "SELECT * FROM contacts WHERE name=?";  
+        Object[] params = new Object[] {"shihang"};
         return jdbcTemplate.query(sql, params, new RowMapperImpl());      
     }
 }

@@ -41,9 +41,7 @@ public class ContactController {
         
         
         DbManager dbManager = new DbManager();
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dbManager.driverManager());
-        
-        List<Contact> results = dbManager.executeQuery(jdbcTemplate);
+        List<Contact> results = dbManager.executeQuery();
         model.addAttribute("contact", results);
         return "contactList";
     }
