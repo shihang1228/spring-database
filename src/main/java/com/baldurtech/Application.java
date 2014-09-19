@@ -21,7 +21,7 @@ public class Application
     public static void main(String[] args) 
     {
         SpringApplication.run(Application.class);
-        /*DbManager dbManager = new DbManager();
+        DbManager dbManager = new DbManager();
         System.out.println("executeQuery");
         
         List<Contact> results = dbManager.executeQuery();  
@@ -29,8 +29,8 @@ public class Application
         for(Contact contact: results)
         {
             System.out.println(contact);
-        }*/
-        DbManager dbManager = new DbManager();
+        }
+        /*DbManager dbManager = new DbManager();
         
         Contact contact = new Contact();
         contact.setId(14L);
@@ -44,7 +44,7 @@ public class Application
         contact.setJobLevel(3L);
         
         dbManager.delete(contact);
-        System.out.println(contact);
+        System.out.println(contact);*/
         
     }
 }

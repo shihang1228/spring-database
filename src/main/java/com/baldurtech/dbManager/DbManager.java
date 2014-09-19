@@ -60,10 +60,11 @@ public class DbManager
         jdbcTemplate.update(sql, params);
     }
     
-    public List<Contact> executeQuery(Contact contact)
+    public List<Contact> executeQuery()
     {
-        String sql = "SELECT * FROM contacts WHERE name=?";  
-        Object[] params = new Object[] {contact.getName()};
+        String sql = "SELECT * FROM contact";  
+        Object[] params = new Object[] {};
         return jdbcTemplate.query(sql, params, new RowMapperImpl());      
     }
+    
 }
