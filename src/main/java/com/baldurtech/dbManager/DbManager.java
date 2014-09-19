@@ -22,7 +22,7 @@ public class DbManager
         return dataSource;
     }
     
-    public void insert()
+    public void createTable()
     {
         jdbcTemplate.execute("drop table if exists contacts");
         jdbcTemplate.execute("create table contacts(" +
@@ -37,10 +37,18 @@ public class DbManager
         jdbcTemplate.update("INSERT INTO contacts(id,name,mobile) values(?,?,?)", 5L, "shuangshuang", "678");
     }
     
-    public List<Contact> executeQuery()
+    public Contact insert(Contact contact)
+    {
+        String sql = "INSERT INTO contact(name, mobile, email, vpmn, office_address, home_address, memo, job, job_level) values(?,?,?,?,?,?,?,?,?)";
+        Object[] params = new Object[] {contact.getName(), contact.getMobile(), contact.getEmail(), contact.getVpmn(), contact.getOfficeAddress(), contact.getHomeAddress(), contact.getMemo(), contact.getJob(), contact.getJobLevel()};
+        jdbcTemplate.update(sql, params);
+        return contact;
+    }
+    
+    public List<Contact> executeQuery(Contact contact)
     {
         String sql = "SELECT * FROM contacts WHERE name=?";  
-        Object[] params = new Object[] {"shihang"};
+        Object[] params = new Object[] {contact.getName()};
         return jdbcTemplate.query(sql, params, new RowMapperImpl());      
     }
 }

@@ -41,7 +41,9 @@ public class ContactController {
         
         
         DbManager dbManager = new DbManager();
-        List<Contact> results = dbManager.executeQuery();
+        Contact contact = new Contact();
+        contact.setName("renjian");
+        List<Contact> results = dbManager.executeQuery(contact);
         model.addAttribute("contact", results);
         return "contactList";
     }

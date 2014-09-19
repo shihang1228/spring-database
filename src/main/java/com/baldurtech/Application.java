@@ -21,7 +21,7 @@ public class Application
     public static void main(String[] args) 
     {
         SpringApplication.run(Application.class);
-        DbManager dbManager = new DbManager();
+        /*DbManager dbManager = new DbManager();
         System.out.println("executeQuery");
         
         List<Contact> results = dbManager.executeQuery();  
@@ -29,6 +29,22 @@ public class Application
         for(Contact contact: results)
         {
             System.out.println(contact);
-        }
+        }*/
+        DbManager dbManager = new DbManager();
+        
+        Contact contact = new Contact();
+        contact.setId(2L);
+        contact.setName("mengguizhen");
+        contact.setMobile("18235408753");
+        contact.setEmail("123@qq.com");
+        contact.setHomeAddress("shanxi");
+        contact.setOfficeAddress("taiyuan");
+        contact.setMemo("zanwu");
+        contact.setJob("HR");
+        contact.setJobLevel(3L);
+        
+        dbManager.insert(contact);
+        System.out.println(contact);
+        
     }
 }
