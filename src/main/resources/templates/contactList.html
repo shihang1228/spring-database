@@ -6,11 +6,6 @@
 </head>
 <body>
     <h1>Contact List</h1>
-    <ul th:each="contact : ${contact}">
-        <li><p th:text="'Hello, ' + ${contact.id} + '!'" /></li>
-        <li><p th:text="'Hello, ' + ${contact.name} + '!'" /></li>
-        <li><p th:text="'Hello, ' + ${contact.mobile} + '!'" /></li>
-    </ul>
     <table border="1">
         <tr>
             <td>id</td>
@@ -19,9 +14,9 @@
         </tr>
         <p th:each="contact : ${contact}">
             <tr>
-                <td th:text="${contact.id}"></td>
-                <td th:text="${contact.name}"></td>
-                <td th:text="${contact.mobile}"></td>
+                <td th:text="${contact.id}">id</td>
+                <td th:text="${contact.name}">name</td>
+                <td th:text="${contact.mobile}">mobile</td>
             </tr>
         </p>
     </table>

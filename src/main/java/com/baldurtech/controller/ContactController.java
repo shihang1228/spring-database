@@ -10,8 +10,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -60,7 +61,6 @@ public class ContactController
                                  @RequestParam(value="job_level") String jobLevel,
                                  @RequestParam(value="memo") String memo, Model model)
     {
-        DbManager dbManager = new DbManager();
         Contact contact = new Contact();
         contact.setName(name);
         contact.setMobile(mobile);
@@ -72,6 +72,7 @@ public class ContactController
         contact.setVpmn(vpmn);
         contact.setMemo(memo);
         
+        DbManager dbManager = new DbManager();
         dbManager.insert(contact);
         return "save";
     }    
