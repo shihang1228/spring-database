@@ -15,7 +15,7 @@
         </tr>
         <p th:each="contact : ${contact}">
             <tr>
-                <td th:text="${contact.name}">name</td>
+                <td><a th:href="@{'show?id=' + ${contact.id}}" th:text="${contact.name}"></a></td>
                 <td th:text="${contact.mobile}">mobile</td>
                 <td th:text="${contact.vpmn}">vpmn</td>
                 <td th:text="${contact.email}">email</td>
