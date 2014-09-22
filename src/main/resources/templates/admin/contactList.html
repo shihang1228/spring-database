@@ -21,7 +21,7 @@
                 <td th:text="${contact.vpmn}">vpmn</td>
                 <td th:text="${contact.email}">email</td>
                 <td><a th:href="@{'show?id=' + ${contact.id}}" th:text="修改"></a></td>
-                <td th:text="删除"></td>
+                <td><a th:href="@{'show?id=' + ${contact.id}}" th:text="删除"></a></td>
             </tr>
         </p>
     </table>

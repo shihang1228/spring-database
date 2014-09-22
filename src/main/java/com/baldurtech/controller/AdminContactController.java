@@ -64,14 +64,15 @@ public class AdminContactController
             contact.setJobLevel(Long.valueOf(jobLevel));
             contact.setMemo(memo);
             
-            model.addAttribute(dbManager.update(contact));
+            model.addAttribute(dbManager.update(contact));            
         }
         else if("delete".equals(action))
         {
             contact.setId(Long.valueOf(id));
-            dbManager.delete(contact);
+            dbManager.delete(contact);            
         }
-        return "save";
+        return "redirect:list";
+
     }
     
 }
