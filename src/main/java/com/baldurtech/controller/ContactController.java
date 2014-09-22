@@ -43,7 +43,17 @@ public class ContactController
         model.addAttribute("contact", results);
         return "contactList";
     }
-
+    
+    @RequestMapping("show")
+    private String contactShow(@RequestParam("id") Long id, Model model)
+    {
+        DbManager dbManager = new DbManager();
+        Contact contact = new Contact();
+        contact.setId(id);
+        model.addAttribute("contact", dbManager.executeQueryById(contact));
+        return "show";
+        
+    }
     @RequestMapping(value = "create",method = RequestMethod.GET)
     private String contactCreate()
     {
