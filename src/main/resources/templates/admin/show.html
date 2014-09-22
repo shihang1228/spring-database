@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+        <title>Contact Show</title>
+    </head>
+    <body>
+        <h1 align="center">Contact show</h1>
+        <table align="center" border="1">
+            <tr>
+                <th>name</th>
+                <td th:text="${contact.name}"></td>
+            </tr>
+            <tr>
+                <th>mobile</th>
+                <td th:text="${contact.mobile}"></td>
+            </tr>
+            <tr>
+                <th>vpmn</th>
+                <td th:text="${contact.vpmn}"></td>
+            </tr>
+            <tr>
+                <th>email</th>
+                <td th:text="${contact.email}"></td>
+            </tr>
+            <tr>
+                <th>officeAddress</th>
+                <td th:text="${contact.officeAddress}"></td>
+            </tr>
+            <tr>
+                <th>homeAddress</th>
+                <td th:text="${contact.homeAddress}"></td>
+            </tr>
+            <tr>
+                <th>job</th>
+                <td th:text="${contact.job}"></td>
+            </tr>
+            <tr>
+                <th>jobLevel</th>
+                <td th:text="${contact.jobLevel}"></td>
+            </tr>
+            <tr>
+                <th>memo</th>
+                <td th:text="${contact.memo}"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><a th:href="@{'list'}" th:text="返回"></a></td>
+            </tr>
+        </table>
+    </body>
+</html>
