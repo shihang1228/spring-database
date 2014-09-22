@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Contact</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1 align="center">Create Contact</h1>
+    <table align="center">
+        <form action="save" method="POST">
+        <tr>
+            <td><label>姓名：<input type="text" name="name" autofocus="autofocus "/></label></td>
+        </tr>
+        <tr>
+            <td><label>电话：<input type="text" name="mobile"/></label></td>
+        </tr>
+        <tr>
+            <td><label>邮箱：<input type="email" autocompile="on" name="email"/></label></td>
+        </tr>
+        <tr>
+            <td><label>VPMN：<input type="text" name="vpmn"/></label></td>
+        </tr>
+        <tr>
+            <td><label>家庭住址：<input type="text" name="home_address"/></label></td>
+        </tr>
+        <tr>
+            <td><label>公司住址：<input type="text" name="office_address"/></label></td>
+        </tr>
+        <tr>
+            <td><label>职位：<input type="text" name="job"/></label></td>
+        </tr>
+        <tr>
+            <td><label>等级：<input type="number" name="job_level"/></label></td>
+        </tr>
+        <tr>
+            <td><label>备注：<input type="text" name="memo"/></label></td>
+        </tr>
+        <tr>
+            <td align="center"><input type="submit" name="action"/></td>
+        </tr>
+        </form>
+    </table>
+</body>
+</html>

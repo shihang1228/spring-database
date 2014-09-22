@@ -54,36 +54,5 @@ public class ContactController
         return "show";
         
     }
-    @RequestMapping(value = "create",method = RequestMethod.GET)
-    private String contactCreate()
-    {
-        return "create";    
-    }
     
-    @RequestMapping(value = "save",method = RequestMethod.POST)
-    private String contactCreate(@RequestParam(value="name") String name,
-                                 @RequestParam(value="mobile") String mobile,
-                                 @RequestParam(value="email") String email,
-                                 @RequestParam(value="vpmn") String vpmn,
-                                 @RequestParam(value="home_address") String homeAddress,
-                                 @RequestParam(value="office_address") String officeAddress,
-                                 @RequestParam(value="job") String job,
-                                 @RequestParam(value="job_level") String jobLevel,
-                                 @RequestParam(value="memo") String memo, Model model)
-    {
-        Contact contact = new Contact();
-        contact.setName(name);
-        contact.setMobile(mobile);
-        contact.setEmail(email);
-        contact.setOfficeAddress(officeAddress);
-        contact.setHomeAddress(homeAddress);
-        contact.setJob(job);
-        contact.setJobLevel(Long.valueOf(jobLevel));
-        contact.setVpmn(vpmn);
-        contact.setMemo(memo);
-        
-        DbManager dbManager = new DbManager();
-        dbManager.insert(contact);
-        return "save";
-    }    
 }
