@@ -15,6 +15,13 @@ public class RowMapperImpl implements RowMapper
         contact.setId(rs.getLong("id"));
         contact.setName(rs.getString("name"));
         contact.setMobile(rs.getString("mobile"));
+        contact.setVpmn(rs.getString("vpmn"));
+        contact.setEmail(rs.getString("email"));
+        contact.setOfficeAddress(rs.getString("office_address"));
+        contact.setHomeAddress(rs.getString("home_address"));
+        contact.setJob(rs.getString("job"));
+        contact.setJobLevel(rs.getLong("job_level"));
+        contact.setMemo(rs.getString("memo"));
         return contact;
     }
 }

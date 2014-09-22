@@ -8,15 +8,17 @@
     <h1>Contact List</h1>
     <table border="1">
         <tr>
-            <td>id</td>
             <td>name</td>
             <td>mobile</td>
+            <td>vpmn</td>
+            <td>email</td>
         </tr>
         <p th:each="contact : ${contact}">
             <tr>
-                <td th:text="${contact.id}">id</td>
                 <td th:text="${contact.name}">name</td>
                 <td th:text="${contact.mobile}">mobile</td>
+                <td th:text="${contact.vpmn}">vpmn</td>
+                <td th:text="${contact.email}">email</td>
             </tr>
         </p>
     </table>
