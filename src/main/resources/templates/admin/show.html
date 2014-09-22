@@ -10,42 +10,46 @@
             <form method="POST">
                 <tr>
                     <th>name</th>
-                    <td><input type="text" th:field="${contact.name}"/></td>
+                    <td><input type="text" th:value="${contact.name}"/></td>
                 </tr>
                 <tr>
                     <th>mobile</th>
-                    <td><input type="text" th:field="${contact.mobile}"/></td>
+                    <td><input type="text" th:value="${contact.mobile}"/></td>
                 </tr>
                 <tr>
                     <th>vpmn</th>
-                    <td><input type="text" th:field="${contact.vpmn}"/></td>
+                    <td><input type="text" th:value="${contact.vpmn}"/></td>
                 </tr>
                 <tr>
                     <th>email</th>
-                    <td><input type="email" th:field="${contact.email}"/></td>
+                    <td><input type="email" th:value="${contact.email}"/></td>
                 </tr>
                 <tr>
                     <th>officeAddress</th>
-                    <td><input type="text" th:field="${contact.officeAddress}"/></td>
+                    <td><input type="text" th:value="${contact.officeAddress}"/></td>
                 </tr>
                 <tr>
                     <th>homeAddress</th>
-                    <td><input type="text" th:field="${contact.homeAddress}"/></td>
+                    <td><input type="text" th:value="${contact.homeAddress}"/></td>
                 </tr>
                 <tr>
                     <th>job</th>
-                    <td><input type="text" th:field="${contact.job}"/></td>
+                    <td><input type="text" th:value="${contact.job}"/></td>
                 </tr>
                 <tr>
                     <th>jobLevel</th>
-                    <td><input type="number" th:field="${contact.jobLevel}"/></td>
+                    <td><input type="number" th:value="${contact.jobLevel}"/></td>
                 </tr>
                 <tr>
                     <th>memo</th>
-                    <td><input type="text" th:field="${contact.memo}"/></td>
+                    <td><input type="text" th:value="${contact.memo}"/></td>
                 </tr>
                 <tr>
-                    <td colspan="2" align="center"><a th:href="@{'list'}" th:text="返回"></a></td>
+                    <td colspan="2" align="center">
+                        <a th:href="@{'list'}" th:text="返回"></a>
+                        <input type="submit" name="action" th:value="修改"/>
+                        <input type="submit" name="action" th:value="删除"/>
+                        </td>
                 </tr>
            </form>
         </table>
