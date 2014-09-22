@@ -51,10 +51,8 @@ public class AdminContactController
     {
         DbManager dbManager = new DbManager();
         Contact contact = new Contact();
-        System.out.println(action);
         if("update".equals(action))
-        {
-            
+        {            
             contact.setId(Long.valueOf(id));
             contact.setName(name);
             contact.setMobile(mobile);
@@ -68,9 +66,10 @@ public class AdminContactController
             
             model.addAttribute(dbManager.update(contact));
         }
-        else
+        else if("delete".equals(action))
         {
-            System.out.println("failed");
+            contact.setId(Long.valueOf(id));
+            dbManager.delete(contact);
         }
         return "save";
     }
