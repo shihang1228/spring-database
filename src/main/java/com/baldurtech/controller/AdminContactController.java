@@ -52,7 +52,7 @@ public class AdminContactController
         DbManager dbManager = new DbManager();
         Contact contact = new Contact();
         if("update".equals(action))
-        {            
+        {                  
             contact.setId(Long.valueOf(id));
             contact.setName(name);
             contact.setMobile(mobile);

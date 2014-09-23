@@ -12,12 +12,8 @@ public class Contact
     private String memo;
     private String job;
     private Long jobLevel;
-    
-    /*public Contact(long id, String name, String mobile) {
-        this.id = id;
-        this.name = name;
-        this.mobile = mobile;
-    }*/
+    private String department;
+    private Long departmentId;
     
     public void setId(Long id)
     {
@@ -104,6 +100,25 @@ public class Contact
     {
         return this.jobLevel;
     }
+    
+    public void setDepartment(String department)
+    {
+        this.department = department;
+
+    }
+    public String getDepartment()
+    {
+        return this.department;
+    }
+    public void setDepartmentId(Long departmentId)
+    {
+        this.departmentId = departmentId;
+    }
+    public Long getDepartmentId()
+    {
+        return this.departmentId;
+    }
+    
     @Override
     public String toString()
     {
