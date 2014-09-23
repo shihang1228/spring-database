@@ -50,7 +50,46 @@ public class AdminDepartController
         depart.setParent(parent);
         
         dbManager.insert(depart);
-        return "redirect:departList";
+        return "redirect:list";
+    }
+    
+    @RequestMapping(value = "show",method = RequestMethod.GET)
+    private String show(@RequestParam("id") Long id, Model model)
+    {
+        DbManager dbManager = new DbManager();
+        Department depart = new Department();
+        depart.setId(id);
+        model.addAttribute("depart", dbManager.executeQueryById(depart));
+        return "admin/departShow";
+    }
+    
+    @RequestMapping(value="show",method = RequestMethod.POST)
+    private String update(@RequestParam(value="id") String id,
+                          @RequestParam(value="name") String name,
+                          @RequestParam(value="address") String address,
+                          @RequestParam(value="parent") String parent,
+                          @RequestParam(value="memo") String memo,                          
+                          @RequestParam(value="action") String action, Model model)
+    {
+        DbManager dbManager = new DbManager();
+        Department depart = new Department();
+        if("update".equals(action))
+        {                  
+            depart.setId(Long.valueOf(id));
+            depart.setName(name);
+            depart.setAddress(address);
+            depart.setParent(parent);            
+            depart.setMemo(memo);
+            
+            model.addAttribute(dbManager.update(depart));            
+        }
+        else if("delete".equals(action))
+        {
+            depart.setId(Long.valueOf(id));
+            dbManager.delete(depart);            
+        }
+        return "redirect:list";
+
     }
    
 }

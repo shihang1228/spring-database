@@ -21,8 +21,8 @@
                     <td th:text="${depart.parent}"></td>
                     <td th:text="${depart.address}"></td>
                     <td th:text="${depart.memo}"></td>
-                    <td th:text="修改"></td>
-                    <td th:text="删除"></td>
+                    <td><a th:href="'show?id=' + ${depart.id}" th:text="修改"></a></td>
+                    <td><a th:href="'show?id=' + ${depart.id}" th:text="删除"></a></td>
                 </tr>
             </p>
         </table>   
