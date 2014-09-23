@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Department</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1 align="center">Create Department</h1>
+    <table align="center">
+        <form method="POST">
+        <tr>
+            <td><label>部门：<input type="text" name="name" autofocus="autofocus "/></label></td>
+        </tr>
+        <tr>
+            <td><label>地址：<input type="text" name="address"/></label></td>
+        </tr>
+        <tr>
+            <td><label>父部门：<input type="text" name="parent" autocompile="on"/></label></td>
+        </tr>
+        <tr>
+            <td><label>备注：<input type="text" name="memo"/></label></td>
+        </tr>      
+        <tr>
+            <td align="center"><input type="submit" name="action"/></td>
+        </tr>
+        </form>
+    </table>
+</body>
+</html>
