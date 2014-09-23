@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Depart List</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <h1 align="center">Depart List</h1>
+        <table border="1" align="center">
+            <h3 colspan="6" align="center"><a th:href="@{'create'}" th:text="新增"></a></h3>
+            <tr>
+                <td>name</td>
+                <td>parent</td>
+                <td>address</td>
+                <td>memo</td>
+                <td colspan="2" align="center">操作</td>
+            </tr>
+            <p th:each="depart : ${depart}">
+                <tr>
+                    <td th:text="${depart.name}"></td>
+                    <td th:text="${depart.parent}"></td>
+                    <td th:text="${depart.address}"></td>
+                    <td th:text="${depart.memo}"></td>
+                    <td th:text="修改"></td>
+                    <td th:text="删除"></td>
+                </tr>
+            </p>
+        </table>   
+    </body>
+</html>

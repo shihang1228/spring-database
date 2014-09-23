@@ -14,11 +14,22 @@ import com.baldurtech.dbManager.admin.RowMapperImpl;
 
 import com.baldurtech.entity.Department;
 
+import java.util.List;
+
 @EnableAutoConfiguration
 @Controller
 @RequestMapping("admin/depart")
 public class AdminDepartController
 {
+    @RequestMapping("list")
+    private String departList(Model model)
+    {
+        DbManager dbManager = new DbManager();
+        List<Department> results = dbManager.executeQuery();
+        model.addAttribute("depart", results);
+        return "admin/departList";
+    }
+
     @RequestMapping(value = "create", method = RequestMethod.GET)
     private String createDepart()
     {
