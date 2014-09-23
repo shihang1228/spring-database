@@ -78,7 +78,7 @@ public class AdminContactController
     @RequestMapping(value = "create",method = RequestMethod.GET)
     private String contactCreate()
     {
-        return "admin/create";    
+        return "admin/createContact";    
     }
     
     @RequestMapping(value = "save",method = RequestMethod.POST)

@@ -9,16 +9,16 @@
         <table border="1" align="center">
             <tr>
                 <td>name</td>
-                <td>memo</td>
-                <td>parent</td>
                 <td>address</td>
+                <td>parent</td>
+                <td>memo</td>
             </tr>
             <p th:each="depart : ${depart}">
                 <tr>
-                    <td th:text="${depart.name}"></td>
-                    <td th:text="${depart.memo}"></td>
-                    <td th:text="${depart.parent}"></td>
+                    <td th:text="${depart.name}"></td>                                        
                     <td th:text="${depart.address}"></td>
+                    <td th:text="${depart.parent}"></td>
+                    <td th:text="${depart.memo}"></td>
                 </tr>
             </p>
         </table>
